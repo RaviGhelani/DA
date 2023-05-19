@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { Fragment } from "react";
-import Header from "../Components/Header";
-import Intro from "../Components/Intro";
-import Footer from "../Components/Footer";
-import SignUp from "../Components/Signup";
+import Header from "../Components/HomePage/Header";
+import Intro from "../Components/HomePage/Intro";
+import Footer from "../Components/HomePage/Footer";
+import SignUp from "../Components/HomePage/Signup";
 
 export default function Home() {
   return (

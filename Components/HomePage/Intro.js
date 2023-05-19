@@ -59,6 +59,7 @@ export default function Intro() {
         <Button
           disableRipple
           // disabled={!isDirty}
+          href="/guild-register"
           variant="contained"
           sx={{
             width: "fit-content",

@@ -1,7 +1,7 @@
 import { Box, Button, Typography, styled } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import arrow from "../public/Images/arrow.png"
+import arrow from "../../public/Images/arrow.png"
 
 const Img = styled(Image)(({ theme }) => ({
     marginRight:"10px",
