@@ -15,10 +15,10 @@ a {
   box-sizing: border-box;
 }
 
-img {
+/* img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 h1,
 h2,
@@ -32,7 +32,7 @@ ul {
   list-style: none;
 }
 
-button {
+/* button {
   padding: 0.5rem 1rem;
   font-weight: bold;
-}
+} */
