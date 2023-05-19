@@ -1,11 +1,27 @@
 import { Box, Button, Typography, styled } from "@mui/material";
+import Image from "next/image";
 import React from "react";
+import arrow from "../public/Images/arrow.png"
 
-function SignUp() {
+const Img = styled(Image)(({ theme }) => ({
+    marginRight:"10px",
+    // width: "100%",
+    // height: "100%",
+    [theme.breakpoints.down("md")]: {
+      //   width: "120px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      //   width: "100px",
+    },
+  }));
+
   const Span = styled("span")(({ theme }) => ({
     color: "#599537",
     [theme.breakpoints.up("xs")]: {},
   }));
+
+function SignUp() {
+
 
   return (
     <Box
@@ -58,15 +74,18 @@ function SignUp() {
           with your gulidmates
         </Typography>
 
-        <Box sx={{width: {xs:"100%" ,sm:"60%" ,md:"100%", margin:"auto"}}}>
+        <Box sx={{width: {xs:"100%" ,sm:"70%" ,md:"100%", margin:"auto"}}}>
           <Typography
             variant="subtitle2"
             gutterBottom
             sx={{
               fontSize: { xs: "12px", sm: "15px", md: "18px", xl: "20px" },
               lineHeight: { xs: "16px", sm: "20px", xl: "25px" },
+              display:"flex", 
+              alignItems: "center"
             }}
           >
+            <Img src={arrow} alt={'arrow'} />
             Best Statagic Planning
           </Typography>
           <Typography
@@ -75,8 +94,11 @@ function SignUp() {
             sx={{
               fontSize: { xs: "12px", sm: "15px", md: "18px", xl: "20px" },
               lineHeight: { xs: "16px", sm: "20px", xl: "25px" },
+              display:"flex", 
+              alignItems: "center"
             }}
           >
+            <Img src={arrow} alt={'arrow'} />
             You are the one who selects order for forts holder
           </Typography>
           <Typography
@@ -85,8 +107,11 @@ function SignUp() {
             sx={{
               fontSize: { xs: "12px", sm: "15px", md: "18px", xl: "20px" },
               lineHeight: { xs: "16px", sm: "20px", xl: "25px" },
+              display:"flex", 
+              alignItems: "center"
             }}
           >
+            <Img src={arrow} alt={'arrow'} />
             Greate Management with Your Leaders/R4-R5
           </Typography>
         </Box>
@@ -105,8 +130,8 @@ function SignUp() {
           disableRipple
           variant="contained"
           sx={{
-            width: { xs: "140px", md: "170px" },
-            height: { xs: "50px", md: "60px" },
+            width: {xs:"120px", sm: "140px", md: "170px" },
+            height: {xs:"40px", sm: "50px", md: "60px" },
             color: "white",
             backgroundColor: "#599537",
             fontSize: { xs: "13px", sm: "16px", xl: "20px" },
@@ -142,8 +167,8 @@ function SignUp() {
           disableRipple
           variant="contained"
           sx={{
-            width: { xs: "140px", md: "170px" },
-            height: { xs: "50px", md: "60px" },
+            width: {xs:"120px", sm: "140px", md: "170px" },
+            height: {xs:"40px", sm: "50px", md: "60px" },
             color: "white",
             backgroundColor: "#599537",
             fontSize: { xs: "13px", sm: "16px", xl: "20px" },
