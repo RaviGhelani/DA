@@ -21,7 +21,7 @@ export default function Intro() {
    }));
 
   return (
-    <DIV sx={{ width: "100%", marginTop: "65px", height: "auto", padding: "20% 10%" }}>
+    <DIV sx={{ width: "100%", marginTop: "65px", height: "auto", maxHeight:"400px", padding: "20% 10%", display:"flex", alignItems:"center", justifyContent:"center" }}>
       {/* <Img
         sx={{ width: "100%", opacity: "0.5", position: "absolute" }}
         src={
@@ -34,21 +34,11 @@ export default function Intro() {
           variant="h1"
           gutterBottom
           sx={{
-            color: "#1F1F1F",
-            fontSize: { xs: "23px", sm: "30px", xl: "36px" },
+            color: "white",
+            fontSize: { xs: "22px", sm: "30px", xl: "40px" },
             lineHeight: { xs: "28px", sm: "36px", xl: "44px" },
-            fontWeight: "500",
+            fontWeight: "600",
             textAlign: "center",
-            "@keyframes move-right": {
-              "0%": {
-                opacity: 0,
-                transform: "translateX(300px)",
-              },
-              "100%": {
-                opacity: 1,
-              },
-            },
-            animation: "move-right 2s",
           }}
         >
           REGISTER YOUR GUILD
@@ -58,21 +48,10 @@ export default function Intro() {
           variant="h4"
           gutterBottom
           sx={{
-            color: "#1F1F1F",
-            fontSize: { xs: "23px", sm: "30px", xl: "36px" },
-            lineHeight: { xs: "28px", sm: "36px", xl: "44px" },
+            color: "white",
+            fontSize: { xs: "15px", sm: "20px", md:"25px", xl: "36px" },
             fontWeight: "500",
             textAlign: "center",
-            "@keyframes move-right": {
-              "0%": {
-                opacity: 0,
-                transform: "translateX(300px)",
-              },
-              "100%": {
-                opacity: 1,
-              },
-            },
-            animation: "move-right 2s",
           }}
         >
           Start registration of your guild with clicking below button
@@ -87,7 +66,7 @@ export default function Intro() {
             padding: "20px 30px",
             backgroundColor: "#60176F",
             margin: "auto",
-            fontSize: { xs: "12px", sm: "14px", xl: "16px" },
+            fontSize: { xs: "13px", sm: "16px", xl: "20px" },
             lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
             fontWeight: "500",
             borderRadius: "10px",

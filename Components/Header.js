@@ -38,10 +38,10 @@ const Header = () => {
       <Box>
         <Box sx={{ display: "flex", gap: "20px" }}>
           <Link href="/">Home</Link>
-          <Link href="/">About DA</Link>
-          <Link href="/">Help</Link>
-          <Link href="/">SignUp</Link>
-          <Link href="/">LogIn</Link>
+          <Link href="/about">About DA</Link>
+          <Link href="/help">Help</Link>
+          <Link href="/signup">SignUp</Link>
+          <Link href="/login">LogIn</Link>
         </Box>
         <Box>
           {/* <div className={styles.bar1}></div>
