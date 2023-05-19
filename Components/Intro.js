@@ -49,7 +49,7 @@ export default function Intro() {
           gutterBottom
           sx={{
             color: "white",
-            fontSize: { xs: "15px", sm: "20px", md:"25px", xl: "36px" },
+            fontSize: { xs: "15px", sm: "20px", md:"25px", xl: "30px" },
             fontWeight: "500",
             textAlign: "center",
           }}
@@ -63,29 +63,30 @@ export default function Intro() {
           sx={{
             width: "fit-content",
             color: "white",
-            padding: "20px 30px",
-            backgroundColor: "#60176F",
+            padding: {xs:"15px 15px", md:"20px 30px"},
+            backgroundColor: "#599537",
             margin: "auto",
+            marginTop:"10px",
             fontSize: { xs: "13px", sm: "16px", xl: "20px" },
             lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
             fontWeight: "500",
             borderRadius: "10px",
-            border: "1px solid #60176F",
+            border: "1px solid #599537",
             textTransform: "capitalize",
             "&:hover": {
               color: "white",
-              backgroundColor: "#60176F",
-              border: "1px solid #60176F",
+              backgroundColor: "#599537",
+              border: "1px solid #599537",
             },
             "&:focus": {
               color: "white",
-              backgroundColor: "#60176F",
-              border: "1px solid #60176F",
+              backgroundColor: "#599537",
+              border: "1px solid #599537",
             },
             "&:active": {
               color: "white",
-              backgroundColor: "#60176F",
-              border: "1px solid #60176F",
+              backgroundColor: "#599537",
+              border: "1px solid #599537",
             },
             "&:disabled": {
               cursor: "not-allowed",

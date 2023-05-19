@@ -31,7 +31,7 @@ const Footer = () => {
             sx={{
               fontSize: { xs: "16px", sm: "18px", md: "20px"},
               lineHeight: { xs: "24px", md: "36px" },
-              fontWeight: "500",
+              fontWeight: "700",
               color:"#599537"
             }}
           >
@@ -40,7 +40,7 @@ const Footer = () => {
           <Box
             sx={{
               fontSize: { xs: "13px", sm: "15px", md: "16px", xl: "20px" },
-              lineHeight: { xs: "20px", md: "30px" },
+              lineHeight: { xs: "25px", md: "30px" },
               display: "flex", flexDirection: "column",
             }}
           >
@@ -59,7 +59,7 @@ const Footer = () => {
           fontSize: { xs: "12px", sm: "1rem" },
         }}
       >
-        <p style={{ padding: "5px 0px", textAlign: "center" }}>
+        <p style={{ padding: "8px 0px", textAlign: "center" }}>
           © 2023 Dragon Arena / LordsMobile
         </p>
       </Box>

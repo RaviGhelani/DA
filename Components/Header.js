@@ -13,6 +13,14 @@ const Img = styled("img")(({ theme }) => ({
   },
 }));
 
+const Links = styled(Link)(({ theme }) => ({
+    padding: "15px 15px",
+    "&:hover": {
+      color: "white",
+      backgroundColor: "#599537"
+    },
+  }));
+
 const Header = () => {
   return (
     <header
@@ -36,12 +44,22 @@ const Header = () => {
         <Img src={""} alt={"TITLE"} />
       </Box>
       <Box>
-        <Box sx={{ display: "flex", gap: "20px" }}>
-          <Link href="/">Home</Link>
-          <Link href="/about">About DA</Link>
-          <Link href="/help">Help</Link>
-          <Link href="/signup">SignUp</Link>
-          <Link href="/login">LogIn</Link>
+        <Box sx={{ display: "flex", gap: "5px" }}>
+          <Links 
+            sx={{
+              padding: "15px 10px",
+              "&:hover": {
+                backgroundColor: "#599537",
+              },
+            }}
+            href="/"
+          >
+            Home
+          </Links>
+          <Links href="/about">About DA</Links>
+          <Links href="/help">Help</Links>
+          <Links href="/signup">SignUp</Links>
+          <Links href="/login">LogIn</Links>
         </Box>
         <Box>
           {/* <div className={styles.bar1}></div>
