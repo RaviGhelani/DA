@@ -1,16 +1,30 @@
 import {
+  Avatar,
   Box,
   Button,
   FormControl,
-  FormLabel,
+  InputLabel,
+  MenuItem,
+  Select,
   TextField,
-  styled,
 } from "@mui/material";
-import Link from "next/link";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { makeStyles } from "@mui/styles";
 
-export default function GuildRegister() {
+const useStyles = makeStyles((theme) => ({
+  label: {
+    color: "red",
+  },
+}));
+
+export default function UserRegister() {
+  const classes = useStyles();
+  const [avatar, setAgsetAvatare] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <Box
       sx={{
@@ -24,25 +38,62 @@ export default function GuildRegister() {
       }}
     >
       <Box sx={{ width: { xs: "90%", sm: "580px" }, marginBottom: "30px" }}>
-        <Button href="/" sx={{backgroundColor: "none", color: "green"}} startIcon={<ArrowBackIcon />}>
+        <Button
+          href="/"
+          sx={{ backgroundColor: "none", color: "green !important" }}
+          startIcon={<ArrowBackIcon />}
+        >
           Back
         </Button>
       </Box>
       <FormControl
         sx={{ display: "flex", gap: "20px", width: { xs: "90%", sm: "auto" } }}
       >
-        {/* <FormLabel>Enter Name</FormLabel> */}
         <TextField
           sx={{
             width: { xs: "100%", sm: "580px" },
             fontSize: { xs: "12px !important" },
           }}
-          label="Enter Your Guild's Full Name"
+          label="Enter Your Game Name (It should be exact same as game)"
         ></TextField>
-        <TextField
-          sx={{ width: { xs: "100%", sm: "580px" } }}
-          label="Enter Your Guild Name (3 Characters)"
-        ></TextField>
+
+        <FormControl
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: { xs: "90%", sm: "auto" },
+          }}
+        >
+          <InputLabel id="demo-simple-select-label">Avatar</InputLabel>
+          <Select
+            sx={{}}
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={avatar}
+            label="Avatar"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>
+              <Avatar
+                alt="Jack Sparrow"
+                src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              />
+            </MenuItem>
+            <MenuItem value={20}>
+              <Avatar
+                alt="Jack Sparrow"
+                src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              />
+            </MenuItem>
+            <MenuItem value={30}>
+              <Avatar
+                alt="Jack Sparrow"
+                src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              />
+            </MenuItem>
+          </Select>
+        </FormControl>
+
         <TextField
           sx={{ width: { xs: "100%", sm: "580px" } }}
           label="Password"
@@ -90,7 +141,7 @@ export default function GuildRegister() {
             },
           }}
         >
-          Register Guild
+          Register
         </Button>
       </FormControl>
     </Box>
