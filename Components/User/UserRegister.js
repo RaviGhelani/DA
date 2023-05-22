@@ -10,13 +10,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
-  label: {
-    color: "red",
-  },
-}));
+
 
 export default function UserRegister() {
   const classes = useStyles();
@@ -104,7 +99,6 @@ export default function UserRegister() {
         ></TextField>
         <Button
           disableRipple
-          // disabled={!isDirty}
           href="/"
           variant="contained"
           sx={{
