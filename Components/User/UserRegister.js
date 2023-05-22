@@ -14,7 +14,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 
 export default function UserRegister() {
-  const classes = useStyles();
   const [avatar, setAgsetAvatare] = React.useState("");
 
   const handleChange = (event) => {
