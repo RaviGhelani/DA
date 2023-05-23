@@ -60,7 +60,7 @@ const Header = () => {
           position: { xs: "absolute", sm: "unset" },
           top: "75px",
           left: "0px",
-          width: { xs: "100%" },
+          width: { xs: "100%", sm: "unset" },
           sm: "unset",
         }}
       >
