@@ -1,6 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { Box, Typography } from "@mui/material";
+import logo from "../../public/Images/logo.png"
+import Image from "next/image";
+
 
 const Footer = () => {
   return (
@@ -8,22 +11,21 @@ const Footer = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: {xs:"column", sm:"row"},
           justifyContent: "space-between",
           padding: "2% 10%",
         }}
       >
         <Box>
-          <Box>
-            logo Here
-            {/* <img
-              className={style.footer_logo}
-              src={data.contentfulEntry.image[0].url}
-              alt={data.contentfulEntry.image[0].title}
-            /> */}
+          <Box sx={{textAlign: "center"}}>
+            <Image
+              src={logo}
+              alt={'logo'}
+            />
           </Box>
         </Box>
         <Box
-          sx={{ display: "flex", flexDirection: "column", padding: "10px 0px" }}
+          sx={{ display: "flex", flexDirection: "column", padding: "10px 0px", textAlign: {xs:"center", sm: "left"} }}
         >
           <Typography
             variant="h4"

@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { Box, styled } from "@mui/material";
+import logo from "../../public/Images/logo.png";
+import Image from "next/image";
+import MenuIcon from "@mui/icons-material/Menu";
 
-const Img = styled("img")(({ theme }) => ({
+const Img = styled(Image)(({ theme }) => ({
   // width: "100%",
   // height: "100%",
   [theme.breakpoints.down("md")]: {
@@ -14,38 +17,55 @@ const Img = styled("img")(({ theme }) => ({
 }));
 
 const Links = styled(Link)(({ theme }) => ({
-    padding: "15px 15px",
-    "&:hover": {
-      color: "white",
-      backgroundColor: "#599537"
-    },
-  }));
+  padding: "15px 15px",
+  "&:hover": {
+    color: "white",
+    backgroundColor: "#599537",
+  },
+}));
 
 const Header = () => {
   return (
-    <header
-      style={{
+    <Box
+      sx={{
+        position: "reletive",
         width: "100%",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: { xs: "space-between", sm: "space-evenly" },
         maxWidth: "2000px",
         position: "fixed",
         top: "0",
         zIndex: "10",
         backgroundColor: "white",
-        padding: "5px 10%",
-        height: "65px",
+        padding: { xs: "5px 10%", sm: "5px 2%", lg: "5px 10%" },
+        height: { xs: "75px", lg: "85px" },
         display: "flex",
         alignItems: "center",
         fontSize: "1rem",
       }}
     >
       <Box sx={{}}>
-        <Img src={""} alt={"TITLE"} />
+        <Img
+          sx={{
+            width: { xs: "90px", lg: "120px" },
+            height: { xs: "50px", lg: "70px" },
+          }}
+          src={logo}
+          alt={"LOGO"}
+        />
       </Box>
-      <Box>
+      <Box
+        sx={{
+          display: { xs: "none", sm: "flex" },
+          position: { xs: "absolute", sm: "unset" },
+          top: "75px",
+          left: "0px",
+          width: { xs: "100%" },
+          sm: "unset",
+        }}
+      >
         <Box sx={{ display: "flex", gap: "5px" }}>
-          <Links 
+          <Links
             sx={{
               padding: "15px 10px",
               "&:hover": {
@@ -67,10 +87,11 @@ const Header = () => {
           <div className={styles.bar3}></div> */}
         </Box>
       </Box>
-      <Box>
-        <img src={""} alt={"title"} />
+      <Box sx={{ display: { xs: "flex", sm: "none" } }}>
+        {/* <img src={""} alt={"title"} /> */}
+        <MenuIcon fontSize="large" />
       </Box>
-    </header>
+    </Box>
   );
 };
 

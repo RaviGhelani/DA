@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
     <Fragment>
       <Head>
         <title>Dragon Arena</title>
-        <link rel="icon" href="/Group 162.png" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       {getLayout(<Component {...pageProps} />)}
     </Fragment>

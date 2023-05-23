@@ -10,8 +10,8 @@ export default function Home() {
     <Fragment>
       <Head>
         <title>Dragon Arena</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <link rel="icon" href="/logo.png" />
+      </Head> 
       <main>
         <Header />
         <Intro />

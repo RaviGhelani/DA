@@ -37,7 +37,7 @@ export default function UserRegister() {
           sx={{ backgroundColor: "none", color: "green !important" }}
           startIcon={<ArrowBackIcon />}
         >
-          Back
+          Home
         </Button>
       </Box>
       <FormControl
@@ -55,12 +55,11 @@ export default function UserRegister() {
           sx={{
             display: "flex",
             gap: "20px",
-            width: { xs: "90%", sm: "auto" },
+            width: { xs: "100%", sm: "auto" },
           }}
         >
           <InputLabel id="demo-simple-select-label">Avatar</InputLabel>
           <Select
-            sx={{}}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={avatar}
@@ -98,12 +97,12 @@ export default function UserRegister() {
         ></TextField>
         <Button
           disableRipple
-          href="/"
+          href="/login"
           variant="contained"
           sx={{
             width: "fit-content",
             color: "white",
-            padding: { xs: "15px 15px", md: "20px 30px" },
+            padding: { xs: "15px 40px", md: "20px 50px" },
             backgroundColor: "#599537",
             margin: "auto",
             marginTop: "10px",
@@ -137,6 +136,7 @@ export default function UserRegister() {
           Register
         </Button>
       </FormControl>
+      
     </Box>
   );
 }

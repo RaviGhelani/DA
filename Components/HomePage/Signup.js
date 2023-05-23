@@ -128,6 +128,7 @@ function SignUp() {
       >
         <Button
           disableRipple
+          href="/signup"
           variant="contained"
           sx={{
             width: {xs:"120px", sm: "140px", md: "170px" },
@@ -165,6 +166,7 @@ function SignUp() {
         </Button>
         <Button
           disableRipple
+          href="login"
           variant="contained"
           sx={{
             width: {xs:"120px", sm: "140px", md: "170px" },
