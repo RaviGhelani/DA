@@ -42,6 +42,8 @@ const Header = () => {
         display: "flex",
         alignItems: "center",
         fontSize: "1rem",
+        boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
+
       }}
     >
       <Box sx={{}}>
