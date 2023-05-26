@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import Image from "next/image";
-import introImage from '../../public/Images/Intro.png'
+import introImage from '../../public/Images/intro.png'
 
 export default function Intro() {
   const Img = styled(Image)(({ theme }) => ({
