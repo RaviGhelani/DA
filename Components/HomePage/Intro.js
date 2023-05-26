@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import Image from "next/image";
-import introImage from '../../public/Images/Intro.jpeg'
+import introImage from '../../public/Images/Intro.png'
 
 export default function Intro() {
   const Img = styled(Image)(({ theme }) => ({
@@ -23,9 +23,9 @@ export default function Intro() {
   //  }));
 
   return (
-    <Box sx={{ width: "100%", position:"reletive", marginTop: {xs:"75px",lg:"85px"}, height:{xs:"400px",md:"480px",lg:"550px", xl:"700px"}, padding: "20% 10%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+    <Box sx={{ width: "100%", position:"reletive", marginTop: {xs:"75px",lg:"85px"}, height:{xs:"260px",sm:"400px",md:"480px",lg:"550px", xl:"700px"}, padding: "20% 10%", display:"flex", alignItems:"center", justifyContent:"center" }}>
       <Img
-        sx={{ width: "100%", height:{xs:"400px" ,md:"480px",lg:"600px", xl:"750px"}, overflowY:"", opacity: "0.7", position: "absolute", zIndex:-2 }}
+        sx={{ width: "100%", height:{xs:"260px", sm:"400px" ,md:"480px",lg:"600px", xl:"750px"}, overflowY:"", opacity: "0.7", position: "absolute", zIndex:-2 }}
         src={introImage}
         alt={""}
       />
