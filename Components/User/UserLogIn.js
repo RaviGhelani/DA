@@ -10,14 +10,19 @@ import {
   } from "@mui/material";
   import React from "react";
   import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+  import { useRouter } from 'next/router';
   
   
   
   export default function UserLogIn() {
     const [avatar, setAgsetAvatare] = React.useState("");
+    const location = useRouter()
   
-    const handleChange = (event) => {
-      setAge(event.target.value);
+    const onFormSubmit = (event) => {
+      console.log(
+        event
+      )
+      location.push('/guild/home')
     };
     return (
       <Box
@@ -33,7 +38,7 @@ import {
       >
         <Box sx={{ width: { xs: "90%", sm: "580px" }, marginBottom: "30px" }}>
           <Button
-            href="/"
+            onClick={()=>location.push('/')}
             sx={{ backgroundColor: "none", color: "green !important" }}
             startIcon={<ArrowBackIcon />}
           >
@@ -57,7 +62,8 @@ import {
           ></TextField>
           <Button
             disableRipple
-            href="/"
+            onClick={onFormSubmit}
+            type="submit"
             variant="contained"
             sx={{
               width: "fit-content",
@@ -98,7 +104,6 @@ import {
         </FormControl>
         <Box sx={{ width: { xs: "90%", sm: "580px" }, marginTop: "30px", textAlign:"center" }}>
         <Button
-          href="/signup"
           sx={{ backgroundColor: "none", color: "green !important" }}
         >
           Go to SignUP

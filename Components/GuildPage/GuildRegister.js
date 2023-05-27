@@ -6,11 +6,19 @@ import {
   TextField,
   styled,
 } from "@mui/material";
-import Link from "next/link";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useRouter } from "next/router";
 
 export default function GuildRegister() {
+  const location = useRouter()
+  
+  const onFormSubmit = (event) => {
+    console.log(
+      event
+    )
+    location.push('/')
+  };
   return (
     <Box
       sx={{
@@ -24,7 +32,7 @@ export default function GuildRegister() {
       }}
     >
       <Box sx={{ width: { xs: "90%", sm: "580px" }, marginBottom: "30px" }}>
-        <Button href="/" sx={{backgroundColor: "none", color: "green"}} startIcon={<ArrowBackIcon />}>
+        <Button onClick={()=>location.push('/')} sx={{backgroundColor: "none", color: "green"}} startIcon={<ArrowBackIcon />}>
           Back
         </Button>
       </Box>
@@ -54,8 +62,8 @@ export default function GuildRegister() {
         <Button
           disableRipple
           // disabled={!isDirty}
-          href="/"
           variant="contained"
+          onClick={onFormSubmit}
           sx={{
             width: "fit-content",
             color: "white",

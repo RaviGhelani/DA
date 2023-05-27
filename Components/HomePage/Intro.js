@@ -2,8 +2,17 @@ import React from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import Image from "next/image";
 import introImage from '../../public/Images/intro.png'
+import { useRouter } from "next/router";
 
 export default function Intro() {
+  const location = useRouter()
+  
+  const onFormSubmit = (event) => {
+    console.log(
+      event
+    )
+    location.push('/guild-register')
+  };
   const Img = styled(Image)(({ theme }) => ({
     // width: "100%",
     // height: "100%",
@@ -60,7 +69,7 @@ export default function Intro() {
         <Button
           disableRipple
           // disabled={!isDirty}
-          href="/guild-register"
+          onClick={onFormSubmit}
           variant="contained"
           sx={{
             width: "fit-content",

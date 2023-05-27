@@ -2,6 +2,7 @@ import { Box, Button, Typography, styled } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import arrow from "../../public/Images/arrow.png"
+import { useRouter } from "next/router";
 
 const Img = styled(Image)(({ theme }) => ({
     marginRight:"10px",
@@ -21,7 +22,20 @@ const Img = styled(Image)(({ theme }) => ({
   }));
 
 function SignUp() {
-
+  const location = useRouter()
+  
+  const onLogin = (event) => {
+    console.log(
+      event
+    )
+    location.push('/login')
+  };
+  const onRegister = (event) => {
+    console.log(
+      event
+    )
+    location.push('/signup')
+  };
 
   return (
     <Box
@@ -128,7 +142,7 @@ function SignUp() {
       >
         <Button
           disableRipple
-          href="/signup"
+          onClick={onRegister}
           variant="contained"
           sx={{
             width: {xs:"120px", sm: "140px", md: "170px" },
@@ -166,7 +180,7 @@ function SignUp() {
         </Button>
         <Button
           disableRipple
-          href="login"
+          onClick={onLogin}
           variant="contained"
           sx={{
             width: {xs:"120px", sm: "140px", md: "170px" },
