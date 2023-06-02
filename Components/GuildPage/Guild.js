@@ -76,7 +76,7 @@ export default function PersistentDrawerLeft() {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar open={open} sx={{backgroundColor:"#599537"}}>
+            <AppBar open={open} sx={{ backgroundColor: "#599537"}}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -91,10 +91,10 @@ export default function PersistentDrawerLeft() {
             </AppBar>
             <Drawer
                 sx={{
-                    width: drawerWidth,
+                    width: {xs:drawerWidth, sm:"30% !important", md:"20% !important" },
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
-                        width: drawerWidth,
+                        width: {xs:drawerWidth, sm:"30% !important", md:"20% !important" },
                         boxSizing: 'border-box',
                     },
                     width: "30%", height: "100vh", backgroundColor: "#599537", overflowY: "auto"
