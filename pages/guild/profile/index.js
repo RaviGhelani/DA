@@ -391,8 +391,8 @@ export default function Home() {
                                     </Box>
                                 </Box>
                                 <Box sx={{ display: "flex", width: "100%", py:1 }}>
-                                    <Box sx={{ width: "30%", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:{sm:"row", xs:"column"} }}>
-                                        <Img src={Army_ATK} sx={{width:{xs:"70%", sm:"50%"}, height:"auto"}} alt={'armyATK-Image'}  />
+                                    <Box sx={{ width: "30%", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:{sm:"row", xs:"column"}, gap:"10px" }}>
+                                        <Img src={Army_ATK} sx={{width:{xs:"70%", sm:"50%", md:"30%", lg:"25%"}, height:"auto"}} alt={'armyATK-Image'}  />
                                         <Typography
                                             variant="h4"
                                             gutterBottom
