@@ -22,6 +22,7 @@ import Cavalry from '../../../public/Images/ProfilePage/Cavalry.png'
 
 import Army from '../../../public/Images/ProfilePage/Troop.png'
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -53,6 +54,7 @@ const Links = styled(Link)(({ theme }) => ({
 }));
 
 export default function Home() {
+    const location = useRouter()
     return (
         <Fragment>
             <main>
@@ -152,6 +154,31 @@ export default function Home() {
                                         </Typography>
                                     </Box>
                                     <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                                        <Typography
+                                            variant="h4"
+                                            gutterBottom
+                                            sx={{
+                                                color: "green",
+                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
+                                                fontWeight: "600",
+
+                                            }}
+                                        >
+                                            Power:{' '}
+                                        </Typography>
+                                        <Typography
+                                            variant="h4"
+                                            gutterBottom
+                                            sx={{
+                                                color: "black",
+                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
+                                                fontWeight: "400",
+                                            }}
+                                        >
+                                            9999
+                                        </Typography>
+                                    </Box>
+                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
                                         <Box>
                                             <Avatar sx={{ width: { md: "90px" }, height: { md: "90px" } }}
                                                 alt="Avatar"
@@ -162,7 +189,7 @@ export default function Home() {
                                     <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
                                         <Button
                                             disableRipple
-                                            // onClick={onLogin}
+                                            onClick={() => location.push('/guild/profile/edit-player-profile')}
                                             variant="contained"
                                             sx={{
                                                 width: { xs: "120px", sm: "120px", md: "140px" },
@@ -287,7 +314,7 @@ export default function Home() {
                                     <Box sx={{ display: "flex", alignItems: "center", gap: "5px", justifyContent: "flex-end" }}>
                                         <Button
                                             disableRipple
-                                            // onClick={onLogin}
+                                            onClick={() => location.push('/guild/profile/edit-guild-profile')}
                                             variant="contained"
                                             sx={{
                                                 width: { xs: "120px", sm: "120px", md: "140px" },
@@ -342,7 +369,7 @@ export default function Home() {
                                         Your Stats
                                     </Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", width: "100%", backgroundColor: "#ccac76", py: 1, borderBottom: "2px solid green" }}>
+                                <Box sx={{ display: "flex", width: "100%", backgroundColor: "#bd9d68", py: 1, borderBottom: "2px solid green" }}>
                                     <Box sx={{ width: "30%" }}>
                                         <Typography
                                             variant="h4"
@@ -406,7 +433,7 @@ export default function Home() {
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green" }}>
+                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green", backgroundColor: "#d1ae73" }}>
                                     <Box sx={{ width: "30%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: { xs: "column" }, gap: "10px" }}>
                                         <Img src={Army} sx={{ width: { xs: "55%", sm: "40%", md: "25%", lg: "20%" }, height: "auto" }} alt={'armyATK-Image'} />
                                         <Typography
@@ -471,7 +498,7 @@ export default function Home() {
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green" }}>
+                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green", backgroundColor: "#d1ae73" }}>
                                     <Box sx={{ width: "30%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: { xs: "column" }, gap: "10px" }}>
                                         <Img src={Infantry} sx={{ width: { xs: "55%", sm: "40%", md: "25%", lg: "20%" }, height: "auto" }} alt={'armyATK-Image'} />
                                         <Typography
@@ -536,7 +563,7 @@ export default function Home() {
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green" }}>
+                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green", backgroundColor: "#d1ae73" }}>
                                     <Box sx={{ width: "30%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: { xs: "column" }, gap: "10px" }}>
                                         <Img src={Ranged} sx={{ width: { xs: "55%", sm: "40%", md: "25%", lg: "20%" }, height: "auto" }} alt={'armyATK-Image'} />
                                         <Typography
@@ -601,7 +628,7 @@ export default function Home() {
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green" }}>
+                                <Box sx={{ display: "flex", width: "100%", py: 1, borderBottom: "1px solid green", backgroundColor: "#d1ae73" }}>
                                     <Box sx={{ width: "30%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: { xs: "column" }, gap: "10px" }}>
                                         <Img src={Cavalry} sx={{ width: { xs: "55%", sm: "40%", md: "25%", lg: "20%" }, height: "auto" }} alt={'armyATK-Image'} />
                                         <Typography
@@ -1016,14 +1043,14 @@ export default function Home() {
                             <Box sx={{ display: "flex", alignItems: "center", gap: "5px", mt: 3, justifyContent: "center" }}>
                                 <Button
                                     disableRipple
-                                    // onClick={onLogin}
+                                    onClick={() => location.push('/guild/profile/edit-stats')}
                                     variant="contained"
                                     sx={{
                                         width: { xs: "140px", sm: "160px", md: "200px" },
                                         height: { xs: "40px", sm: "50px", md: "60px" },
                                         color: "white",
                                         backgroundColor: "#599537",
-                                        fontSize: { xs: "13px", sm: "16px", md:"18px", xl: "22px" },
+                                        fontSize: { xs: "13px", sm: "16px", md: "18px", xl: "22px" },
                                         lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
                                         fontWeight: "500",
                                         borderRadius: "10px",
