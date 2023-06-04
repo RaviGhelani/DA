@@ -30,13 +30,13 @@ const Img = styled(Image)(({ theme }) => ({
 export default function UserRegister() {
   const [avatar, setAgsetAvatare] = React.useState("");
   const location = useRouter()
-  
-    const onFormSubmit = (event) => {
-      console.log(
-        event
-      )
-      location.push('/login')
-    };
+
+  const onFormSubmit = (event) => {
+    console.log(
+      event
+    )
+    location.push('/login')
+  };
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -55,7 +55,7 @@ export default function UserRegister() {
     >
       <Box sx={{ width: { xs: "90%", sm: "580px" }, marginBottom: "30px" }}>
         <Button
-          onClick={()=>location.push('/')}
+          onClick={() => location.push('/')}
           sx={{ backgroundColor: "none", color: "green !important" }}
           startIcon={<ArrowBackIcon />}
         >
@@ -125,7 +125,7 @@ export default function UserRegister() {
             label="Select Guild"
             onChange={handleChange}
           >
-            <MenuItem value={10} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", px:'10%' }}>
+            <MenuItem value={10} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", px: '10%' }}>
               <Typography
                 variant="subtitle2"
                 gutterBottom
@@ -149,10 +149,12 @@ export default function UserRegister() {
         </FormControl>
 
         <TextField
+          type="password"
           sx={{ width: { xs: "100%", sm: "580px" } }}
           label="Password"
         ></TextField>
         <TextField
+          type="password"
           sx={{ width: { xs: "100%", sm: "580px" } }}
           label="Confirm Password"
         ></TextField>

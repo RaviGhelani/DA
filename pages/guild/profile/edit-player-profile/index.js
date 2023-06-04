@@ -95,6 +95,7 @@ export default function Index() {
           </Select>
         </FormControl>
         <TextField
+        type="password"
           sx={{ width: { xs: "100%", sm: "580px" } }}
           label="Password"
         ></TextField>

@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 export default function GuildRegister() {
   const location = useRouter()
-  
+
   const onFormSubmit = (event) => {
     console.log(
       event
@@ -32,7 +32,7 @@ export default function GuildRegister() {
       }}
     >
       <Box sx={{ width: { xs: "90%", sm: "580px" }, marginBottom: "30px" }}>
-        <Button onClick={()=>location.push('/')} sx={{backgroundColor: "none", color: "green"}} startIcon={<ArrowBackIcon />}>
+        <Button onClick={() => location.push('/')} sx={{ backgroundColor: "none", color: "green" }} startIcon={<ArrowBackIcon />}>
           Back
         </Button>
       </Box>
@@ -52,10 +52,12 @@ export default function GuildRegister() {
           label="Enter Your Guild Name (3 Characters)"
         ></TextField>
         <TextField
+          type="password"
           sx={{ width: { xs: "100%", sm: "580px" } }}
           label="Password"
         ></TextField>
         <TextField
+          type="password"
           sx={{ width: { xs: "100%", sm: "580px" } }}
           label="Confirm Password"
         ></TextField>
