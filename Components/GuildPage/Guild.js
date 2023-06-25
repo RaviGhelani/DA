@@ -91,10 +91,10 @@ export default function PersistentDrawerLeft() {
             </AppBar>
             <Drawer
                 sx={{
-                    width: {xs:drawerWidth, sm:"30% !important", md:"20% !important" },
+                    width: {xs:drawerWidth, sm:"30% !important", md:"25% !important", lg:"20% !important" },
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
-                        width: {xs:drawerWidth, sm:"30% !important", md:"20% !important" },
+                        width: {xs:drawerWidth, sm:"30% !important", md:"25% !important", lg:"20% !important" },
                         boxSizing: 'border-box',
                     },
                     width: "30%", height: "100vh", backgroundColor: "#599537", overflowY: "auto"
