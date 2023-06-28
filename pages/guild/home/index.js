@@ -1,9 +1,10 @@
 import Head from "next/head";
-import { Fragment } from "react";
-// import GuildSignUp from "../../Components/GuildPage/Guildsignup";
+import { Fragment, useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Box, Link, Typography, styled } from "@mui/material";
 import Guild from "../../../Components/GuildPage/Guild";
 import AllPlayerTable from "../../../Components/GuildPage/allPlayer-Table";
+import { setAllPlayersListCustomPagination } from "../../../redux/slices/playerSlice";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -28,6 +29,62 @@ const Links = styled(Link)(({ theme }) => ({
 }));
 
 export default function Home() {
+
+    const {
+        allPlayersListCustomPagination,
+        allPlayersListLoader,
+        allPlayersList,
+        allPlayersListPagination,
+    } = useSelector((state) => state.players);
+
+    const dispatch = useDispatch();
+
+    const [searchFilter, setSearchFilter] = useState({
+        name: "",
+    });
+
+    const handleRowsPerPageChange = useCallback(
+        (event) => {
+            dispatch(
+                setAllPlayersListCustomPagination({
+                    page: 1,
+                    size: event.target.value,
+                })
+            );
+
+            dispatch(
+                getAllPlayersList({
+                    page: 1,
+                    size: event.target.value,
+                    search: searchFilter?.name,
+                })
+            );
+        },
+        [allPlayersListCustomPagination?.page, searchFilter]
+    );
+
+
+    const handlePageChange = useCallback(
+        (event, value) => {
+            console.log("value", value);
+
+            dispatch(
+                setAllPlayersListCustomPagination({
+                    page: value + 1,
+                    size: allPlayersListCustomPagination?.size,
+                })
+            );
+
+            dispatch(
+                getAllPlayersList({
+                    page: value + 1,
+                    size: allPlayersListCustomPagination?.size,
+                    search: searchFilter?.name,
+                })
+            );
+        },
+        [allPlayersListCustomPagination?.size, searchFilter]
+    );
     return (
         <Fragment>
             <main>
@@ -40,7 +97,13 @@ export default function Home() {
                                 welcom to guild page
                             </Box>
                             <Box sx={{ mt: 2, p: { xs: 1, sm: 2 } }}>
-                                <AllPlayerTable />
+                                <AllPlayerTable
+                                    count={allPlayersListPagination?.totalItems}
+                                    items={allPlayersList}
+                                    onPageChange={handlePageChange}
+                                    onRowsPerPageChange={handleRowsPerPageChange}
+                                    page={allPlayersListCustomPagination?.page - 1}
+                                    rowsPerPage={allPlayersListCustomPagination?.size} />
                             </Box>
 
                         </Box>

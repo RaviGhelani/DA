@@ -81,7 +81,7 @@ const AllPlayerTable = (props) => {
                                     items?.map((player) => {
                                         const isSelected = selected.includes(player?._id);
                                         return (
-                                            <TableRow hover key={player?._id} selected={isSelected} sx={{backgroundColor:"#f0f0f0"}}>
+                                            <TableRow hover key={player?._id} selected={isSelected} sx={{backgroundColor:"#f7f7f7"}}>
                                                 <TableCell>{player.rank}</TableCell>
                                                 <TableCell>{player.name}</TableCell>
                                                 <TableCell>{player.power}</TableCell>
