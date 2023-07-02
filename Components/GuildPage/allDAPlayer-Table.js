@@ -49,7 +49,7 @@ const items = [
     }
 ]
 
-const AllPlayerTable = (props) => {
+const AllDAPlayerTable = (props) => {
     const {
         count = 0,
         // items = [],
@@ -107,4 +107,4 @@ const AllPlayerTable = (props) => {
     );
 };
 
-export default AllPlayerTable;
+export default AllDAPlayerTable;

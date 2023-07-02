@@ -17,3 +17,20 @@ export const getAllPlayersListByGuildId = createAsyncThunk(
     }
   }
 );
+
+// get all DA players list api
+export const getAllDAPlayersListByGuildId = createAsyncThunk(
+  "players/getAllDAPlayersListByGuildId",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await playersAPI.getAllDAPlayersListApi(data);
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

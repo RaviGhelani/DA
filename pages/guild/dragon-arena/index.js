@@ -3,10 +3,10 @@ import { Fragment, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Box, Link, Stack, Typography, styled } from "@mui/material";
 import Guild from "../../../Components/GuildPage/Guild";
-import AllPlayerTable from "../../../Components/GuildPage/allPlayer-Table";
-import { setAllPlayersListCustomPagination } from "../../../redux/slices/playerSlice";
+import { setAllDAPlayersListCustomPagination, setAllPlayersListCustomPagination } from "../../../redux/slices/playerSlice";
 import { PlayersSearch } from "../../../Components/GuildPage/PlayerSearch";
-import { getAllPlayersListByGuildId } from "../../../redux/actions/playersAction";
+import AllDAPlayerTable from "../../../Components/GuildPage/allDAPlayer-Table";
+import { getAllDAPlayersListByGuildId } from "../../../redux/actions/playersAction";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -31,10 +31,10 @@ const Links = styled(Link)(({ theme }) => ({
 export default function Home() {
 
     const {
-        allPlayersListCustomPagination,
-        allPlayersListLoader,
-        allPlayersList,
-        allPlayersListPagination,
+        allDAPlayersListCustomPagination,
+        allDAPlayersListLoader,
+        allDAPlayersList,
+        allDAPlayersListPagination,
     } = useSelector((state) => state.players);
 
     const dispatch = useDispatch();
@@ -44,21 +44,21 @@ export default function Home() {
     const handleRowsPerPageChange = useCallback(
         (event) => {
             dispatch(
-                setAllPlayersListCustomPagination({
+                setAllDAPlayersListCustomPagination({
                     page: 1,
                     size: event.target.value,
                 })
             );
 
             dispatch(
-                getAllPlayersListByGuildId({
+                getAllDAPlayersListByGuildId({
                     page: 1,
                     size: event.target.value,
                     search: searchFilter?.name,
                 })
             );
         },
-        [allPlayersListCustomPagination?.page, searchFilter]
+        [allDAPlayersListCustomPagination?.page, searchFilter]
     );
 
 
@@ -67,21 +67,21 @@ export default function Home() {
             console.log("value", value);
 
             dispatch(
-                setAllPlayersListCustomPagination({
+                setAllDAPlayersListCustomPagination({
                     page: value + 1,
-                    size: allPlayersListCustomPagination?.size,
+                    size: allDAPlayersListCustomPagination?.size,
                 })
             );
 
             dispatch(
-                getAllPlayersListByGuildId({
+                getAllDAPlayersListByGuildId({
                     page: value + 1,
-                    size: allPlayersListCustomPagination?.size,
+                    size: allDAPlayersListCustomPagination?.size,
                     search: searchFilter?.name,
                 })
             );
         },
-        [allPlayersListCustomPagination?.size, searchFilter]
+        [allDAPlayersListCustomPagination?.size, searchFilter]
     );
     const searchFilterHandler = (value) => {
         setSearchFilter(value);
@@ -97,7 +97,7 @@ export default function Home() {
                         <Box sx={{ width: "100%", pb: "5%", marginTop: '65px' }}>
                             <Stack direction="row" justifyContent="space-between" spacing={4} sx={{mt:2, px:2, color: "green"}}>
                                 <Stack spacing={1}>
-                                    <Typography variant="h5">{"aPR's Dashboard"}</Typography>
+                                    <Typography variant="h5">{"Dragon Arena Dashboard"}</Typography>
                                 </Stack>
                                 <Stack spacing={1}>
                                     <Typography>{"Total Players joined:" + ' 5'}</Typography>
@@ -105,13 +105,13 @@ export default function Home() {
                             </Stack>
                             <PlayersSearch searchFilterHandler={searchFilterHandler} />
                             <Box sx={{ mt: 0, p: { xs: 1, sm: 2 } }}>
-                                <AllPlayerTable
-                                    count={allPlayersListPagination?.totalItems}
-                                    items={allPlayersList}
+                                <AllDAPlayerTable
+                                    count={allDAPlayersListPagination?.totalItems}
+                                    items={allDAPlayersList}
                                     onPageChange={handlePageChange}
                                     onRowsPerPageChange={handleRowsPerPageChange}
-                                    page={allPlayersListCustomPagination?.page - 1}
-                                    rowsPerPage={allPlayersListCustomPagination?.size} />
+                                    page={allDAPlayersListCustomPagination?.page - 1}
+                                    rowsPerPage={allDAPlayersListCustomPagination?.size} />
                             </Box>
 
                         </Box>
