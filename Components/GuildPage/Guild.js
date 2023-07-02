@@ -11,6 +11,59 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Avatar } from '@mui/material';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { SvgIcon } from "@mui/material";
+
+
+const items = [
+    {
+        title: "Home",
+        path: "/guild/home",
+        icon: (
+            <SvgIcon fontSize="small">
+                {/* <ChartBarIcon /> */}
+            </SvgIcon>
+        ),
+    },
+    {
+        title: "Dragon Arena",
+        path: "/guild/dragon-arena",
+        icon: (
+            <SvgIcon fontSize="small">
+                {/* <UsersIcon /> */}
+            </SvgIcon>
+        ),
+    },
+    {
+        title: "Profile",
+        path: "/guild/profile",
+        icon: (
+            <SvgIcon fontSize="small">
+                {/* <ShoppingBagIcon /> */}
+            </SvgIcon>
+        ),
+    },
+    {
+        title: "Help",
+        path: "/guild/help",
+        icon: (
+            <SvgIcon fontSize="small">
+                {/* <VoucherSvg /> */}
+            </SvgIcon>
+        ),
+    },
+    {
+        title: "Logout",
+        path: "/",
+        icon: (
+            <SvgIcon fontSize="small">
+                {/* <CompanySvg /> */}
+            </SvgIcon>
+        ),
+    },
+];
+
 
 const drawerWidth = 200;
 
@@ -18,7 +71,6 @@ const Links = styled(Link)(({ theme }) => ({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    // padding: '15px',
     display: "flex",
     height: "50px",
     color: "white",
@@ -26,8 +78,11 @@ const Links = styled(Link)(({ theme }) => ({
     borderBottom: "1px solid white",
     textDecoration: "none",
     cursor: "pointer",
-    // backgroundColor:"yellow",
     [theme.breakpoints.up("xs")]: {},
+    "&:hover, &:focus": {
+        backgroundColor: "#ffff7f", // Add your desired hover and focus styles here
+        color: "green",
+    },
 }));
 
 const Span = styled("span")(({ theme }) => ({
@@ -63,6 +118,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+    const router = useRouter();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -76,7 +132,7 @@ export default function PersistentDrawerLeft() {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar open={open} sx={{ backgroundColor: "#599537"}}>
+            <AppBar open={open} sx={{ backgroundColor: "#599537" }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -91,10 +147,10 @@ export default function PersistentDrawerLeft() {
             </AppBar>
             <Drawer
                 sx={{
-                    width: {xs:drawerWidth, sm:"30% !important", md:"25% !important", lg:"20% !important" },
+                    width: { xs: drawerWidth, sm: "30% !important", md: "25% !important", lg: "20% !important" },
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
-                        width: {xs:drawerWidth, sm:"30% !important", md:"25% !important", lg:"20% !important" },
+                        width: { xs: drawerWidth, sm: "30% !important", md: "25% !important", lg: "20% !important" },
                         boxSizing: 'border-box',
                     },
                     width: "30%", height: "100vh", backgroundColor: "#599537", overflowY: "auto"
@@ -141,28 +197,73 @@ export default function PersistentDrawerLeft() {
                                     mb: 0
                                 }}
                             >
-                                Rank: {' '}
+                                Power Rank: {' '}
                                 <Span>
                                     11
                                 </Span>
                             </Typography>
+                            <Typography
+                                variant="h4"
+                                gutterBottom
+                                sx={{
+                                    color: "white",
+                                    fontSize: { xs: "13px", sm: "16px", md: "16px", lg: "18px", xl: "20px" },
+                                    fontWeight: "400",
+                                    textAlign: "left",
+                                    mb: 0
+                                }}
+                            >
+                                Power: {' '}
+                                <Span>
+                                    9999
+                                </Span>
+                            </Typography>
                         </Box>
                     </Box>
-                    <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                        <Links
-                            href="/guild/home"
-                            sx={{ backgroundColor: "yellow", color: "green", fontWeight: "700", fontSize: "20px" }}
-                        >
-                            Home
-                        </Links>
-                        <Links href="/guild/dragon-arena">Dragon Arena</Links>
-                        <Links href="/guild/profile">Profile</Links>
-                        <Links href="/guild/help">Help</Links>
-                        <Links href="/">Logout</Links>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}
+                    >
+                        {items.map((item) => {
+                            let currentNav = false;
+                            if (router.pathname === item.path) {
+                                currentNav = true;
+                            }
+
+                            if (currentNav) {
+                                return (
+                                    <Links
+                                        href={item.path}
+                                        sx={{
+                                            backgroundColor: "#ffff7f",
+                                            color: "green",
+                                            fontWeight: "700",
+                                            fontSize: "20px"
+                                        }}
+                                    >
+                                        {item.title}
+                                    </Links>
+                                );
+                            } else {
+                                return (
+                                    <Links
+                                        href={item.path}
+                                        sx={{ fontWeight: "700", fontSize: "20px" }}
+                                    >
+                                        {item.title}
+                                    </Links>
+                                );
+                            }
+                        })}
                     </Box>
+
                 </Box>
 
-            </Drawer>
-        </Box>
+            </Drawer >
+        </Box >
     );
 }

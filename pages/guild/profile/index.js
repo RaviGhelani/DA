@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Fragment } from "react";
 // import GuildSignUp from "../../Components/GuildPage/Guildsignup";
-import { Avatar, Box, Button, Link, Typography, styled } from "@mui/material";
+import { Avatar, Box, Button, Grid, Link, List, Typography, styled } from "@mui/material";
 import Guild from "../../../Components/GuildPage/Guild";
 import ProfilePageImage from '../../../public/Images/ProfilePage/ProfilePageImage.jpeg'
 import Army_ATK from '../../../public/Images/ProfilePage/Army_ATK.png'
@@ -23,6 +23,7 @@ import Cavalry from '../../../public/Images/ProfilePage/Cavalry.png'
 import Army from '../../../public/Images/ProfilePage/Troop.png'
 import Image from "next/image";
 import { useRouter } from "next/router";
+import ListItemComp from "../../../Components/Design/ListItemComp";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -72,285 +73,136 @@ export default function Home() {
                     }}
                 />
 
+
+
                 <Box sx={{ px: 0 }}>
                     <Box sx={{ display: "flex" }}>
                         <Guild />
                         <Box sx={{ width: "100%", pb: "5%", marginTop: '65px' }}>
-                            <Box sx={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.3)", pt: "2rem", mt: { xs: "-1rem", sm: "unset" }, flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: "20px", px: { xs: "2%", sm: "15%", md: "20%" }, pb: 40, borderBottom: "3px solid rgba(89, 149, 55, 0.7)" }}>
-                                <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
+                            <Box sx={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.4)", pt: "2rem", mt: { xs:"-10px", sm: "unset" }, flexDirection: { xs: "column" }, justifyContent: "space-between", gap: "20px", px: { xs: "3%", sm: "10%" }, pb: 40, borderBottom: "3px solid rgba(89, 149, 55, 0.7)" }}>
 
-                                            }}
+                                <Box
+                                    sx={{
+                                        display: "inline-block",
+                                        width: "100%",
+                                        borderRadius: "10px",
+                                        boxShadow:
+                                            "0px 5px 22px rgba(0, 0, 0, 0.04), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.03)",
+                                        backgroundColor: "rgba(215,181,124, 0.8)",
+                                    }}
+                                >
+                                    <Grid container columnSpacing={4}>
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            sx={{  }}
                                         >
-                                            Game Name:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            Mad B00M
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
+                                            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", backgroundColor: "rgba(215,181,124, 0.9)", py: 1, borderRadius: "10px 10px 0 0", }}>
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    gutterBottom
+                                                    sx={{
+                                                        mb: 1,
+                                                        fontWeight: "600",
+                                                        fontSize: {xs:"15px", sm:"18px", lg:"22px"},
+                                                        display: "inline-block",
+                                                        color: "green",
+                                                        px: "14px",
+                                                        mt: 1,
+                                                    }}
+                                                >
+                                                    PLAYER DETAILS
+                                                </Typography>
+                                                <Box sx={{ display: "flex", alignItems: "center", gap: "5px", px: 2 }}>
+                                                    <Button
+                                                        disableRipple
+                                                        onClick={() => location.push('/guild/profile/edit-stats')}
+                                                        variant="contained"
+                                                        sx={{
+                                                            width: { xs: "110px", sm: "140px", md: "160px" },
+                                                            height: { xs: "30px", sm: "40px", md: "45px" },
+                                                            color: "white",
+                                                            backgroundColor: "#599537",
+                                                            fontSize: { xs: "13px", sm: "16px", md: "18px", xl: "22px" },
+                                                            lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
+                                                            fontWeight: "500",
+                                                            borderRadius: "10px",
+                                                            border: "1px solid #599537",
+                                                            textTransform: "capitalize",
+                                                            "&:hover": {
+                                                                color: "white",
+                                                                backgroundColor: "#599537",
+                                                                border: "1px solid #599537",
+                                                            },
+                                                            "&:focus": {
+                                                                color: "white",
+                                                                backgroundColor: "#599537",
+                                                                border: "1px solid #599537",
+                                                            },
+                                                            "&:active": {
+                                                                color: "white",
+                                                                backgroundColor: "#599537",
+                                                                border: "1px solid #599537",
+                                                            },
+                                                            "&:disabled": {
+                                                                cursor: "not-allowed",
+                                                                border: "none",
+                                                            },
+                                                        }}
+                                                    >
+                                                        Edit Profile
+                                                    </Button>
+                                                </Box>
+                                            </Box>
 
-                                            }}
-                                        >
-                                            Guild Rank:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            R3
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
+                                            <List>
+                                                <Grid container columnSpacing={20}>
+                                                    <Grid item xs={12} md={6}>
+                                                        <ListItemComp
+                                                            label={"Game name"}
+                                                            value={"Mad B00M"}
+                                                        />
+                                                    </Grid>
+                                                    <Grid item xs={12} md={6}>
+                                                        <ListItemComp
+                                                            label={"Guild Rank"}
+                                                            value={"R3"}
+                                                        />
+                                                    </Grid>
+                                                </Grid>
 
-                                            }}
-                                        >
-                                            DA Rank:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            11
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
+                                                <Grid container columnSpacing={20}>
+                                                    <Grid item xs={12} md={6}>
+                                                        <ListItemComp
+                                                            label={"Guild Tag"}
+                                                            value={"aPR"}
+                                                        />
+                                                    </Grid>
+                                                    <Grid item xs={12} md={6}>
+                                                        <ListItemComp
+                                                            label={"Power"}
+                                                            value={"8654"}
+                                                        />
+                                                    </Grid>
+                                                </Grid>
 
-                                            }}
-                                        >
-                                            Power:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            9999
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <Box>
-                                            <Avatar sx={{ width: { md: "90px" }, height: { md: "90px" } }}
-                                                alt="Avatar"
-                                                src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                            />
-                                        </Box>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <Button
-                                            disableRipple
-                                            onClick={() => location.push('/guild/profile/edit-player-profile')}
-                                            variant="contained"
-                                            sx={{
-                                                width: { xs: "120px", sm: "120px", md: "140px" },
-                                                height: { xs: "35px", sm: "40px", md: "50px" },
-                                                color: "white",
-                                                backgroundColor: "#599537",
-                                                fontSize: { xs: "13px", sm: "16px", xl: "20px" },
-                                                lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
-                                                fontWeight: "500",
-                                                borderRadius: "10px",
-                                                border: "1px solid #599537",
-                                                textTransform: "capitalize",
-                                                "&:hover": {
-                                                    color: "white",
-                                                    backgroundColor: "#599537",
-                                                    border: "1px solid #599537",
-                                                },
-                                                "&:focus": {
-                                                    color: "white",
-                                                    backgroundColor: "#599537",
-                                                    border: "1px solid #599537",
-                                                },
-                                                "&:active": {
-                                                    color: "white",
-                                                    backgroundColor: "#599537",
-                                                    border: "1px solid #599537",
-                                                },
-                                                "&:disabled": {
-                                                    cursor: "not-allowed",
-                                                    border: "none",
-                                                },
-                                            }}
-                                        >
-                                            Edit Profile
-                                        </Button>
-                                    </Box>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px", justifyContent: "flex-end" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
-
-                                            }}
-                                        >
-                                            Guild Name:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            APR
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px", justifyContent: "flex-end" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
-
-                                            }}
-                                        >
-                                            Leader:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            AprBossTeam
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px", justifyContent: "flex-end" }}>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "green",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "600",
-
-                                            }}
-                                        >
-                                            Guild Tag:{' '}
-                                        </Typography>
-                                        <Typography
-                                            variant="h4"
-                                            gutterBottom
-                                            sx={{
-                                                color: "black",
-                                                fontSize: { xs: "13px", sm: "14px", md: "15px", xl: "16px" },
-                                                fontWeight: "400",
-                                            }}
-                                        >
-                                            aPR
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px", justifyContent: "flex-end" }}>
-                                        <Box>
-                                            <Avatar sx={{ width: { md: "90px" }, height: { md: "90px" } }}
-                                                alt="Avatar"
-                                                src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                            />
-                                        </Box>
-                                    </Box>
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "5px", justifyContent: "flex-end" }}>
-                                        <Button
-                                            disableRipple
-                                            onClick={() => location.push('/guild/profile/edit-guild-profile')}
-                                            variant="contained"
-                                            sx={{
-                                                width: { xs: "120px", sm: "120px", md: "140px" },
-                                                height: { xs: "35px", sm: "40px", md: "50px" },
-                                                color: "white",
-                                                backgroundColor: "#599537",
-                                                fontSize: { xs: "13px", sm: "16px", xl: "20px" },
-                                                lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
-                                                fontWeight: "500",
-                                                borderRadius: "10px",
-                                                border: "1px solid #599537",
-                                                textTransform: "capitalize",
-                                                "&:hover": {
-                                                    color: "white",
-                                                    backgroundColor: "#599537",
-                                                    border: "1px solid #599537",
-                                                },
-                                                "&:focus": {
-                                                    color: "white",
-                                                    backgroundColor: "#599537",
-                                                    border: "1px solid #599537",
-                                                },
-                                                "&:active": {
-                                                    color: "white",
-                                                    backgroundColor: "#599537",
-                                                    border: "1px solid #599537",
-                                                },
-                                                "&:disabled": {
-                                                    cursor: "not-allowed",
-                                                    border: "none",
-                                                },
-                                            }}
-                                        >
-                                            Edit Profile
-                                        </Button>
-                                    </Box>
+                                                <Grid container columnSpacing={20}>
+                                                    <Grid item xs={12} md={6}>
+                                                        <ListItemComp
+                                                            label={"Guild Name"}
+                                                            value={"Full Name of Guild"}
+                                                        />
+                                                    </Grid>
+                                                    <Grid item xs={12} md={6}>
+                                                        <ListItemComp
+                                                            label={"Power Rank"}
+                                                            value={"2"}
+                                                        />
+                                                    </Grid>
+                                                </Grid>
+                                            </List>
+                                        </Grid>
+                                    </Grid>
                                 </Box>
                             </Box>
                             <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column", mt: -35, mx: { xs: "3%", sm: "5%", md: "10%" }, p: 3, pt: { xs: 3, sm: 6 }, position: "relative", zIndex: 1, backgroundColor: "rgba(215,181,124, 1)", boxShadow: "0px 0px 50px #707070", borderRadius: "10px" }}>
@@ -359,14 +211,14 @@ export default function Home() {
                                         variant="h4"
                                         gutterBottom
                                         sx={{
-                                            fontSize: { xs: "18px", sm: "20px", md: "25px", xl: "30px" },
+                                            fontSize: {xs:"15px", sm:"18px", lg:"22px"},
                                             fontWeight: "600",
                                             textAlign: "center",
 
                                             color: "green"
                                         }}
                                     >
-                                        Your Stats
+                                        YOUR STATS
                                     </Typography>
                                 </Box>
                                 <Box sx={{ display: "flex", width: "100%", backgroundColor: "#bd9d68", py: 1, borderBottom: "2px solid green" }}>

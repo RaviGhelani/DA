@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 export default function Intro() {
   const location = useRouter()
-  
+
   const onFormSubmit = (event) => {
     console.log(
       event
@@ -16,6 +16,7 @@ export default function Intro() {
   const Img = styled(Image)(({ theme }) => ({
     // width: "100%",
     // height: "100%",
+    maxWidth: "2000px",
     [theme.breakpoints.down("md")]: {
       //   width: "120px",
     },
@@ -32,14 +33,14 @@ export default function Intro() {
   //  }));
 
   return (
-    <Box sx={{ width: "100%", position:"reletive", marginTop: {xs:"75px",lg:"80px"}, height:{xs:"260px",sm:"400px",md:"480px",lg:"550px", xl:"700px"}, padding: "20% 10%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+    <Box sx={{ width: "100%", position: "reletive", marginTop: { xs: "75px", lg: "80px" }, height: { xs: "260px", sm: "400px", md: "480px", lg: "550px", xl: "700px" }, padding: "20% 10%", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <Img
-        sx={{ width: "100%", height:{xs:"260px", sm:"400px" ,md:"480px",lg:"600px", xl:"750px"}, overflowY:"", opacity: "0.7", position: "absolute", zIndex:-2 }}
+        sx={{ width: "100%", height: { xs: "260px", sm: "400px", md: "480px", lg: "600px", xl: "750px" }, overflowY: "", opacity: "0.7", position: "absolute", zIndex: -2 }}
         src={introImage}
         alt={""}
       />
 
-      <Box sx={{display: "flex", justifyContent: "center", alignItems: "cenetr", flexDirection: "column"}}>
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "cenetr", flexDirection: "column" }}>
         <Typography
           variant="h1"
           gutterBottom
@@ -59,7 +60,7 @@ export default function Intro() {
           gutterBottom
           sx={{
             color: "white",
-            fontSize: { xs: "15px", sm: "20px", md:"25px", xl: "30px" },
+            fontSize: { xs: "15px", sm: "20px", md: "25px", xl: "30px" },
             fontWeight: "500",
             textAlign: "center",
           }}
@@ -74,10 +75,10 @@ export default function Intro() {
           sx={{
             width: "fit-content",
             color: "white",
-            padding: {xs:"15px 15px", md:"20px 30px"},
+            padding: { xs: "15px 15px", md: "20px 30px" },
             backgroundColor: "#599537",
             margin: "auto",
-            marginTop:"10px",
+            marginTop: "10px",
             fontSize: { xs: "13px", sm: "16px", xl: "20px" },
             lineHeight: { xs: "13px", sm: "16px", xl: "19px" },
             fontWeight: "500",
