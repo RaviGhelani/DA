@@ -3,6 +3,9 @@ import Head from "next/head";
 import { Fragment } from "react";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import { ToastContainer } from 'react-toastify';
+import "simplebar-react/dist/simplebar.min.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -15,6 +18,7 @@ export default function App({ Component, pageProps }) {
       <Provider store={store}>
         {getLayout(<Component {...pageProps} />)}
       </Provider>
+      <ToastContainer />
     </Fragment>
   );
 }

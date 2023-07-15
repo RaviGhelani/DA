@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import playersSlice from "./slices/playerSlice";
+import guildSlice from "./slices/guildSlice";
 
 const combineReducer = {
   // auth: authSlice,
@@ -8,7 +9,7 @@ const combineReducer = {
   // voucher: voucherSlice,
   // company: companySlice,
   // benifits: benifitsSlice,
-  // proposals: proposalsSlice,
+  guild: guildSlice,
   players: playersSlice,
 };
 
