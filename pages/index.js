@@ -6,7 +6,9 @@ import Footer from "../Components/HomePage/Footer";
 import SignUp from "../Components/HomePage/Signup";
 
 export default function Home() {
-  localStorage.removeItem("token")
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem("token")
+  }
   return (
     <Fragment>
       <Head>

@@ -39,7 +39,9 @@ export default function UserLogIn() {
             toast(res.message, {
               type: "success",
             });
-            localStorage.setItem("token", res.token);
+            if (typeof window !== 'undefined') {
+              localStorage.setItem("token", res.token);
+            }
             location.push("/guild/home")
           })
           .catch((err) => {
