@@ -66,8 +66,13 @@ export default function GuildRegister() {
 
       try {
 
-        await dispatch(registerGuild({ avatar: selectedAvatar, ...values })).unwrap()
-          .then((res) => { router.push("/") })
+        await dispatch(registerGuild({ avatar: selectedAvatar._id, ...values })).unwrap()
+          .then((res) => {
+            toast(res.message, {
+              type: "success",
+            });
+            router.push("/")
+          })
           .catch((err) => {
             toast(err, {
               type: "error",
@@ -159,9 +164,9 @@ export default function GuildRegister() {
               sx={{ display: "flex" }}
             >
               {guildAvatar?.map((item, idx) => {
-
+                // console.log(process.env.NEXT_PUBLIC_BASE_URL + "/images/" + item.image, "url");
                 return (
-                  <MenuItem key={idx} value={item.name} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", px: '10%' }}>
+                  <MenuItem key={idx} value={item} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", px: '10%' }}>
                     <Typography
                       variant="subtitle2"
                       gutterBottom
@@ -175,7 +180,7 @@ export default function GuildRegister() {
                     </Typography>
                     <Avatar
                       alt={item.name}
-                      src={process.env.NEXT_PUBLIC_BASE_URL + "/image/" + item.image}
+                      src={process.env.NEXT_PUBLIC_BASE_URL + "/images/" + item.image}
                     />
                   </MenuItem>
                 )

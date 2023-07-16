@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllDAPlayersListByGuildId,
   getAllPlayersListByGuildId,
+  getPlayerAvatar,
+  playerLogin,
 } from "../actions/playersAction";
 
 const PlayersSlice = createSlice({
@@ -22,6 +24,10 @@ const PlayersSlice = createSlice({
       size: 10,
     },
     error: null,
+    playerAvatar: null,
+    playerInfo: null,
+    success: false,
+    loading: false,
   },
   reducers: {
     setAllPlayersListCustomPagination: (state, action) => {
@@ -67,6 +73,40 @@ const PlayersSlice = createSlice({
 
     builder.addCase(getAllDAPlayersListByGuildId.rejected, (state, { payload }) => {
       state.allDAPlayersListLoader = false;
+      state.error = payload;
+    });
+
+
+    // get Player Avatar
+    builder.addCase(getPlayerAvatar.pending, (state, { payload }) => {
+      state.loading = true;
+    });
+
+    builder.addCase(getPlayerAvatar.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.playerAvatar = payload;
+      state.success = true;
+    });
+
+    builder.addCase(getPlayerAvatar.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    });
+
+
+    // get Player Avatar
+    builder.addCase(playerLogin.pending, (state, { payload }) => {
+      state.loading = true;
+    });
+
+    builder.addCase(playerLogin.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.playerInfo = payload;
+      state.success = true;
+    });
+
+    builder.addCase(playerLogin.rejected, (state, { payload }) => {
+      state.loading = false;
       state.error = payload;
     });
   },

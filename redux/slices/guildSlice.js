@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getGuildAvatar, registerGuild } from "../actions/guildAction";
+import { getGuildAvatar, getGuildList, registerGuild } from "../actions/guildAction";
 
 const guildSlice = createSlice({
   name: "guild",
@@ -7,6 +7,7 @@ const guildSlice = createSlice({
     loading: false,
     guildData: null,
     guildAvatar: null,
+    guildList: null,
     error: null,
     success: false,
   },
@@ -36,6 +37,21 @@ const guildSlice = createSlice({
       state.guildAvatar = payload;
     });
     builder.addCase(getGuildAvatar.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    });
+
+
+    // guild Liat
+    builder.addCase(getGuildList.pending, (state, { payload }) => {
+      state.loading = true;
+    });
+    builder.addCase(getGuildList.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+      state.guildList = payload;
+    });
+    builder.addCase(getGuildList.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     });

@@ -34,3 +34,19 @@ export const getGuildAvatar = createAsyncThunk(
         }
     }
 );
+
+export const getGuildList = createAsyncThunk(
+    "guild/getGuildList",
+    async (data, { rejectWithValue }) => {
+        try {
+            const response = await guildAPI.getGuildListApi(data);
+            return response.data;
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
