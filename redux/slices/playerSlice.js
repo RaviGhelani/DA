@@ -3,6 +3,7 @@ import {
   getAllDAPlayersListByGuildId,
   getAllPlayersListByGuildId,
   getPlayerAvatar,
+  getPlayerInfo,
   playerLogin,
 } from "../actions/playersAction";
 
@@ -95,17 +96,17 @@ const PlayersSlice = createSlice({
 
 
     // get Player Avatar
-    builder.addCase(playerLogin.pending, (state, { payload }) => {
+    builder.addCase(getPlayerInfo.pending, (state, { payload }) => {
       state.loading = true;
     });
 
-    builder.addCase(playerLogin.fulfilled, (state, { payload }) => {
+    builder.addCase(getPlayerInfo.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.playerInfo = payload;
       state.success = true;
     });
 
-    builder.addCase(playerLogin.rejected, (state, { payload }) => {
+    builder.addCase(getPlayerInfo.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     });

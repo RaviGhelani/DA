@@ -11,7 +11,7 @@ import {
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from 'next/router';
-import { playerLogin } from "../../redux/actions/playersAction";
+import { getPlayerInfo, playerLogin } from "../../redux/actions/playersAction";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
@@ -41,7 +41,9 @@ export default function UserLogIn() {
             });
             if (typeof window !== 'undefined') {
               localStorage.setItem("token", res.token);
+              localStorage.setItem("userId", res.userId);
             }
+            dispatch(getPlayerInfo(res.userId))
             location.push("/guild/home")
           })
           .catch((err) => {

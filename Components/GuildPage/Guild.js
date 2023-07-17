@@ -14,6 +14,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { SvgIcon } from "@mui/material";
+import { useDispatch, useSelector } from 'react-redux';
+import { getPlayerInfo } from '../../redux/actions/playersAction';
 
 
 const items = [
@@ -119,8 +121,23 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
     const router = useRouter();
+    const dispatch = useDispatch()
     const theme = useTheme();
+    const {
+        playerInfo,
+    } = useSelector((state) => state.players);
     const [open, setOpen] = React.useState(false);
+
+    let playerId;
+    if (typeof window !== 'undefined') {
+        playerId = localStorage.getItem("userId");
+    }
+
+    React.useEffect(() => {
+        if(playerId){
+            dispatch(getPlayerInfo(playerId))
+        }
+    }, [playerId])
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -168,8 +185,8 @@ export default function PersistentDrawerLeft() {
                     <Box sx={{ display: "flex", alignItems: "center", gap: "5%", paddingBottom: "15px !important", borderBottom: "1px solid white", p: 1, cursor: "pointer" }}>
                         <Box>
                             <Avatar sx={{ width: { md: "70px" }, height: { md: "70px" } }}
-                                alt="Avatar"
-                                src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                alt={playerInfo.gameName}
+                                src={process.env.NEXT_PUBLIC_BASE_URL + "/" + playerInfo?.avatar?.image}
                             />
                         </Box>
                         <Box>
@@ -184,7 +201,7 @@ export default function PersistentDrawerLeft() {
                                     mb: 0
                                 }}
                             >
-                                Mad B00M
+                                {playerInfo?.gameName}
                             </Typography>
                             <Typography
                                 variant="h4"
@@ -199,7 +216,7 @@ export default function PersistentDrawerLeft() {
                             >
                                 Power Rank: {' '}
                                 <Span>
-                                    11
+                                    {playerInfo?.powerRank ? playerInfo?.powerRank : "--"}
                                 </Span>
                             </Typography>
                             <Typography
@@ -215,7 +232,7 @@ export default function PersistentDrawerLeft() {
                             >
                                 Power: {' '}
                                 <Span>
-                                    9999
+                                    {playerInfo?.power}
                                 </Span>
                             </Typography>
                         </Box>

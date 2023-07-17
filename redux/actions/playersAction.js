@@ -86,3 +86,36 @@ export const getPlayerAvatar = createAsyncThunk(
       }
   }
 );
+
+
+export const getPlayerInfo = createAsyncThunk(
+  "guild/getPlayerInfo",
+  async (userId, { rejectWithValue }) => {
+      try {
+          const response = await playersAPI.getPlayerInfoApi(userId);
+          return response.data;
+      } catch (error) {
+          if (error.response && error.response.data.message) {
+              return rejectWithValue(error.response.data.message);
+          } else {
+              return rejectWithValue(error.message);
+          }
+      }
+  }
+);
+
+export const getPlayerListByGuildId = createAsyncThunk(
+  "guild/getPlayerInfo",
+  async (guildId, { rejectWithValue }) => {
+      try {
+          const response = await playersAPI.getPlayerInfoApi(guildId);
+          return response.data;
+      } catch (error) {
+          if (error.response && error.response.data.message) {
+              return rejectWithValue(error.response.data.message);
+          } else {
+              return rejectWithValue(error.message);
+          }
+      }
+  }
+);

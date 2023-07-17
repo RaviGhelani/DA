@@ -32,6 +32,11 @@ const playersAPI = {
   getPlayerAvatarApi() {
     return axios.get(`/player/player-avatar`, config);
   },
+
+  // get Player Info
+  getPlayerInfoApi(userId) {
+    return axios.get(`/player/me/${userId}`, config);
+  },
 };
 
 export default playersAPI;

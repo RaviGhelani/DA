@@ -1,11 +1,11 @@
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Box, Link, Stack, Typography, styled } from "@mui/material";
 import Guild from "../../../Components/GuildPage/Guild";
 import AllPlayerTable from "../../../Components/GuildPage/allPlayer-Table";
 import { setAllPlayersListCustomPagination } from "../../../redux/slices/playerSlice";
 import { PlayersSearch } from "../../../Components/GuildPage/PlayerSearch";
-import { getAllPlayersListByGuildId } from "../../../redux/actions/playersAction";
+import { getAllPlayersListByGuildId, getPlayerInfo } from "../../../redux/actions/playersAction";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -34,7 +34,10 @@ export default function Home() {
         allPlayersListLoader,
         allPlayersList,
         allPlayersListPagination,
+        playerInfo,
     } = useSelector((state) => state.players);
+
+    // console.log(playerInfo, "info");
 
     const dispatch = useDispatch();
 

@@ -63,7 +63,7 @@ const AllPlayerTable = (props) => {
     return (
         <>
             <Card>
-                <Scrollbar>
+                {/* <Scrollbar> */}
                     <Box sx={{ minWidth: 500, overflow:"auto" }}>
                         <Table>
                             <TableHead>
@@ -91,7 +91,7 @@ const AllPlayerTable = (props) => {
                             </TableBody>
                         </Table>
                     </Box>
-                </Scrollbar>
+                {/* </Scrollbar> */}
 
                 <TablePagination
                     component="div"
