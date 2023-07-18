@@ -1,11 +1,12 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Box, Link, Stack, Typography, styled } from "@mui/material";
+import { Avatar, Box, Link, Stack, Typography, debounce, styled } from "@mui/material";
 import Guild from "../../../Components/GuildPage/Guild";
 import AllPlayerTable from "../../../Components/GuildPage/allPlayer-Table";
 import { setAllPlayersListCustomPagination } from "../../../redux/slices/playerSlice";
 import { PlayersSearch } from "../../../Components/GuildPage/PlayerSearch";
 import { getAllPlayersListByGuildId, getPlayerInfo } from "../../../redux/actions/playersAction";
+import { toast } from "react-toastify";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -38,10 +39,43 @@ export default function Home() {
     } = useSelector((state) => state.players);
 
     // console.log(playerInfo, "info");
+    // console.log(allPlayersList, "info");
 
     const dispatch = useDispatch();
 
     const [searchFilter, setSearchFilter] = useState("");
+
+    const getAllPlayersListHandler = async () => {
+        try {
+            dispatch(getAllPlayersListByGuildId({ page: allPlayersListCustomPagination?.page, size: allPlayersListCustomPagination?.size, search: searchFilter, guildId: playerInfo.guildId }))
+                .unwrap()
+                .then((res) => { })
+                .catch((err) => {
+                    toast(err, {
+                        type: "error",
+                    });
+                });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(
+        () => {
+            if (playerInfo?.guildId) {
+                getAllPlayersListHandler();
+
+                return () => {
+                    dispatch(
+                        setAllPlayersListCustomPagination({
+                            page: 1,
+                            size: 10,
+                        })
+                    );
+                };
+            }
+
+        }, [playerInfo?.guildId]);
 
     const handleRowsPerPageChange = useCallback(
         (event) => {
@@ -56,11 +90,12 @@ export default function Home() {
                 getAllPlayersListByGuildId({
                     page: 1,
                     size: event.target.value,
-                    search: searchFilter?.name,
+                    search: searchFilter,
+                    guildId: playerInfo.guildId,
                 })
             );
         },
-        [allPlayersListCustomPagination?.page, searchFilter]
+        [allPlayersListCustomPagination?.page, searchFilter, playerInfo?.guildId]
     );
 
 
@@ -79,15 +114,29 @@ export default function Home() {
                 getAllPlayersListByGuildId({
                     page: value + 1,
                     size: allPlayersListCustomPagination?.size,
-                    search: searchFilter?.name,
+                    search: searchFilter,
+                    guildId: playerInfo?.guildId,
                 })
             );
         },
         [allPlayersListCustomPagination?.size, searchFilter]
     );
+
     const searchFilterHandler = (value) => {
         setSearchFilter(value);
+        dispatch(
+            getAllPlayersListByGuildId({
+                page: allPlayersListCustomPagination?.page,
+                size: allPlayersListCustomPagination?.size,
+                search: value,
+                guildId: playerInfo?.guildId,
+            })
+        );
+       
     };
+
+    const debounceProposalsHandler = debounce(searchFilterHandler, 1000);
+
 
     return (
         <Fragment>
@@ -116,7 +165,7 @@ export default function Home() {
                                     </Stack>
                                 </Box>
                             </Box>
-                            <PlayersSearch searchFilterHandler={searchFilterHandler} />
+                            <PlayersSearch searchFilterHandler={debounceProposalsHandler} />
                             <Box sx={{ mt: 0, p: { xs: 1, sm: 2 } }}>
                                 <AllPlayerTable
                                     count={allPlayersListPagination?.totalItems}

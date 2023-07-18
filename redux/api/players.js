@@ -19,8 +19,8 @@ const playersAPI = {
   },
 
   // get all players list api
-  getAllPlayersListApi({ page = 1, size = 10, data }) {
-    return axios.post(`/api/admin/customers/filterallplayers?page=${page}&size=${size}`, data);
+  getAllPlayersListApi({ page = 1, size = 10, guildId, search }) {
+    return axios.get(`/player/guildplayerlist/${guildId}?page=${page}&size=${size}&search=${search}`);
   },
 
   // get all DA players list api

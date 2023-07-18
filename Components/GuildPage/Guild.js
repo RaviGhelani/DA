@@ -185,7 +185,7 @@ export default function PersistentDrawerLeft() {
                     <Box sx={{ display: "flex", alignItems: "center", gap: "5%", paddingBottom: "15px !important", borderBottom: "1px solid white", p: 1, cursor: "pointer" }}>
                         <Box>
                             <Avatar sx={{ width: { md: "70px" }, height: { md: "70px" } }}
-                                alt={playerInfo.gameName}
+                                alt={playerInfo?.gameName}
                                 src={process.env.NEXT_PUBLIC_BASE_URL + "/" + playerInfo?.avatar?.image}
                             />
                         </Box>

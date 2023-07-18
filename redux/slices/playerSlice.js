@@ -52,7 +52,7 @@ const PlayersSlice = createSlice({
 
     builder.addCase(getAllPlayersListByGuildId.fulfilled, (state, { payload }) => {
       state.allPlayersListLoader = false;
-      state.allPlayersList = payload.data;
+      state.allPlayersList = payload.players;
       state.allPlayersListPagination = payload.pagination;
     });
 
