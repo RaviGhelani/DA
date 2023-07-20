@@ -26,8 +26,8 @@ const AllPlayerTable = (props) => {
     return (
         <>
             <Card>
-                {/* <Scrollbar> */}
-                    <Box sx={{ minWidth: 500, overflow:"auto" }}>
+                <Scrollbar>
+                    <Box sx={{ minWidth: 400, overflow:"auto" }}>
                         <Table>
                             <TableHead>
                                 <TableRow sx={{ backgroundColor: "#dae6da" }}>
@@ -39,12 +39,13 @@ const AllPlayerTable = (props) => {
                             </TableHead>
 
                             <TableBody>
+                                {items?.length === 0 && <Box sx={{m:1}}>No data found...!</Box>}
                                 {items?.length > 0 &&
                                     items?.map((player) => {
                                         const isSelected = selected.includes(player?._id);
                                         return (
                                             <TableRow hover key={player?._id} selected={isSelected} sx={{backgroundColor:"#fcfcfc"}}>
-                                                <TableCell>{player.poweRank ? player.poweRank : 0}</TableCell>
+                                                <TableCell>{player.powerRank ? player.powerRank : 0}</TableCell>
                                                 <TableCell>{player.gameName}</TableCell>
                                                 <TableCell>{player.power}</TableCell>
                                                 <TableCell>{player.guildRank}</TableCell>
@@ -54,7 +55,7 @@ const AllPlayerTable = (props) => {
                             </TableBody>
                         </Table>
                     </Box>
-                {/* </Scrollbar> */}
+                </Scrollbar>
 
                 <TablePagination
                     component="div"

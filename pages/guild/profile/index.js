@@ -24,6 +24,7 @@ import Army from '../../../public/Images/ProfilePage/Troop.png'
 import Image from "next/image";
 import { useRouter } from "next/router";
 import ListItemComp from "../../../Components/Design/ListItemComp";
+import { useSelector } from "react-redux";
 
 
 const Span = styled("span")(({ theme }) => ({
@@ -56,6 +57,11 @@ const Links = styled(Link)(({ theme }) => ({
 
 export default function Home() {
     const location = useRouter()
+    const {
+        playerInfo,
+    } = useSelector((state) => state.players);
+    console.log(playerInfo, "playerInfo");
+
     return (
         <Fragment>
             <main>
@@ -116,7 +122,7 @@ export default function Home() {
                                                 <Box sx={{ display: "flex", alignItems: "center", gap: "5px", px: 2 }}>
                                                     <Button
                                                         disableRipple
-                                                        onClick={() => location.push('/guild/profile/edit-stats')}
+                                                        onClick={() => location.push('/guild/profile/edit-player-profile')}
                                                         variant="contained"
                                                         sx={{
                                                             width: { xs: "110px", sm: "140px", md: "160px" },
@@ -160,13 +166,13 @@ export default function Home() {
                                                     <Grid item xs={12} md={6}>
                                                         <ListItemComp
                                                             label={"Game name"}
-                                                            value={"Mad B00M"}
+                                                            value={playerInfo?.gameName}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12} md={6}>
                                                         <ListItemComp
                                                             label={"Guild Rank"}
-                                                            value={"R3"}
+                                                            value={playerInfo?.guildRank}
                                                         />
                                                     </Grid>
                                                 </Grid>
@@ -175,13 +181,13 @@ export default function Home() {
                                                     <Grid item xs={12} md={6}>
                                                         <ListItemComp
                                                             label={"Guild Tag"}
-                                                            value={"aPR"}
+                                                            value={playerInfo?.guildId?.guildTag}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12} md={6}>
                                                         <ListItemComp
                                                             label={"Power"}
-                                                            value={"8654"}
+                                                            value={playerInfo?.power}
                                                         />
                                                     </Grid>
                                                 </Grid>
@@ -190,13 +196,13 @@ export default function Home() {
                                                     <Grid item xs={12} md={6}>
                                                         <ListItemComp
                                                             label={"Guild Name"}
-                                                            value={"Full Name of Guild"}
+                                                            value={playerInfo?.guildId?.guildName}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12} md={6}>
                                                         <ListItemComp
                                                             label={"Power Rank"}
-                                                            value={"2"}
+                                                            value={playerInfo?.powerRank ? playerInfo?.powerRank : "-"}
                                                         />
                                                     </Grid>
                                                 </Grid>
@@ -315,7 +321,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                300%
+                                                {playerInfo?.armyATK}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -330,7 +336,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                420%
+                                                {playerInfo?.armyHP}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -345,7 +351,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                330%
+                                                {playerInfo?.armyDEF}%
                                             </Typography>
                                         </Box>
                                     </Box>
@@ -380,7 +386,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                300%
+                                                {playerInfo?.infATK}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -395,7 +401,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                420%
+                                                {playerInfo?.infHP}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -410,7 +416,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                330%
+                                                {playerInfo?.infDEF}%
                                             </Typography>
                                         </Box>
                                     </Box>
@@ -445,7 +451,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                300%
+                                                {playerInfo?.rangerATK}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -460,7 +466,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                420%
+                                                {playerInfo?.rangerHP}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -475,7 +481,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                330%
+                                                {playerInfo?.rangerDEF}%
                                             </Typography>
                                         </Box>
                                     </Box>
@@ -510,7 +516,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                300%
+                                                {playerInfo?.cavATK}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -525,7 +531,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                420%
+                                                {playerInfo?.cavHP}%
                                             </Typography>
                                         </Box>
                                         <Box sx={{ width: "33.33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
@@ -540,7 +546,7 @@ export default function Home() {
                                                     m: 0,
                                                 }}
                                             >
-                                                330%
+                                                {playerInfo?.cavDEF}%
                                             </Typography>
                                         </Box>
                                     </Box>

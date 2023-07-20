@@ -103,18 +103,19 @@ export const getPlayerInfo = createAsyncThunk(
   }
 );
 
-// export const getPlayerListByGuildId = createAsyncThunk(
-//   "guild/getPlayerInfo",
-//   async (guildId, { rejectWithValue }) => {
-//       try {
-//           const response = await playersAPI.getPlayerInfoApi(guildId);
-//           return response.data;
-//       } catch (error) {
-//           if (error.response && error.response.data.message) {
-//               return rejectWithValue(error.response.data.message);
-//           } else {
-//               return rejectWithValue(error.message);
-//           }
-//       }
-//   }
-// );
+// update stats of player
+export const playerUpdateStats = createAsyncThunk(
+  "guild/playerUpdateStats",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await playersAPI.playerUpdateStatsApi(data);
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

@@ -47,7 +47,7 @@ export default function Home() {
 
     const getAllPlayersListHandler = async () => {
         try {
-            dispatch(getAllPlayersListByGuildId({ page: allPlayersListCustomPagination?.page, size: allPlayersListCustomPagination?.size, search: searchFilter, guildId: playerInfo.guildId }))
+            dispatch(getAllPlayersListByGuildId({ page: allPlayersListCustomPagination?.page, size: allPlayersListCustomPagination?.size, search: searchFilter, guildId: playerInfo?.guildId?._id }))
                 .unwrap()
                 .then((res) => { })
                 .catch((err) => {
@@ -62,7 +62,7 @@ export default function Home() {
 
     useEffect(
         () => {
-            if (playerInfo?.guildId) {
+            if (playerInfo?.guildId?._id) {
                 getAllPlayersListHandler();
 
                 return () => {
@@ -75,7 +75,7 @@ export default function Home() {
                 };
             }
 
-        }, [playerInfo?.guildId]);
+        }, [playerInfo?.guildId?._id]);
 
     const handleRowsPerPageChange = useCallback(
         (event) => {
@@ -91,11 +91,11 @@ export default function Home() {
                     page: 1,
                     size: event.target.value,
                     search: searchFilter,
-                    guildId: playerInfo.guildId,
+                    guildId: playerInfo?.guildId?._id,
                 })
             );
         },
-        [allPlayersListCustomPagination?.page, searchFilter, playerInfo?.guildId]
+        [allPlayersListCustomPagination?.page, searchFilter, playerInfo?.guildId?._id]
     );
 
 
@@ -115,7 +115,7 @@ export default function Home() {
                     page: value + 1,
                     size: allPlayersListCustomPagination?.size,
                     search: searchFilter,
-                    guildId: playerInfo?.guildId,
+                    guildId: playerInfo?.guildId?._id,
                 })
             );
         },
@@ -129,10 +129,10 @@ export default function Home() {
                 page: allPlayersListCustomPagination?.page,
                 size: allPlayersListCustomPagination?.size,
                 search: value,
-                guildId: playerInfo?.guildId,
+                guildId: playerInfo?.guildId?._id,
             })
         );
-       
+
     };
 
     const debounceProposalsHandler = debounce(searchFilterHandler, 1000);
@@ -148,20 +148,20 @@ export default function Home() {
                         <Box sx={{ width: "100%", pb: "5%", marginTop: '65px' }}>
                             <Stack direction="row" justifyContent="space-between" spacing={4} sx={{ mt: 2, px: 2, color: "green" }}>
                                 <Stack spacing={1}>
-                                    <Typography variant="h5" sx={{ fontSize: { lg: "26px", md: "22px", xs: "20px" } }}>{"aPR's Dashboard"}</Typography>
+                                    <Typography variant="h5" sx={{ fontSize: { lg: "26px", md: "22px", xs: "20px" } }}>{playerInfo?.guildId?.guildTag + "'s Dashboard"}</Typography>
                                 </Stack>
                             </Stack>
                             <Box sx={{ mt: 2, p: 2, backgroundColor: "#f0f5f0 ", display: "flex", alignItems: "center", gap: "10px", color: "green" }}>
                                 <Box>
                                     <Avatar sx={{ width: { md: "70px", xs: "50px" }, height: { md: "70px", xs: "50px" } }}
-                                        alt="Avatar"
-                                        src="https://images.pexels.com/photos/4016173/pexels-photo-4016173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                        alt={playerInfo?.guildAvatar?.name}
+                                        src={process.env.NEXT_PUBLIC_BASE_URL + "/" + playerInfo?.guildAvatar?.image}
                                     />
                                 </Box>
                                 <Box>
-                                    <Typography variant="h5" sx={{ fontSize: { lg: "22px", md: "18px", xs: "16px" } }}>{"aPR (a Phoenix Rising)"}</Typography>
+                                    <Typography variant="h5" sx={{ fontSize: { lg: "22px", md: "18px", xs: "16px" } }}>{playerInfo?.guildId?.guildTag + " (" + playerInfo?.guildId.guildName + ")"}</Typography>
                                     <Stack spacing={1}>
-                                        <Typography sx={{ fontSize: { lg: "18px", md: "16px", xs: "13px" } }}>{"Total Players:" + ' 5'}</Typography>
+                                        <Typography sx={{ fontSize: { lg: "18px", md: "16px", xs: "13px" } }}>{"Total Players:" + ' ' + allPlayersListPagination?.totalItems}</Typography>
                                     </Stack>
                                 </Box>
                             </Box>

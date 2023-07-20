@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 export const Scrollbar = styled(SimpleBar)(({ theme }) => ({
     [theme.breakpoints.up('xs')]: {
       '.simplebar-placeholder': {
-        display: 'none!important',
+        // display: 'none !important',
       },
     },
   }));

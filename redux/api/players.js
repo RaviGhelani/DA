@@ -37,6 +37,11 @@ const playersAPI = {
   getPlayerInfoApi(userId) {
     return axios.get(`/player/me/${userId}`, config);
   },
+
+  // update stats of player
+  playerUpdateStatsApi(data) {
+    return axios.put(`/player/update-player/${data.playerId}`, data.values, config);
+  },
 };
 
 export default playersAPI;
