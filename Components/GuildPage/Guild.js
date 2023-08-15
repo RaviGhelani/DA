@@ -56,6 +56,15 @@ const items = [
         ),
     },
     {
+        title: "Access",
+        path: "/guild/access",
+        icon: (
+            <SvgIcon fontSize="small">
+                {/* <VoucherSvg /> */}
+            </SvgIcon>
+        ),
+    },
+    {
         title: "Logout",
         path: "/",
         icon: (
@@ -127,6 +136,8 @@ export default function PersistentDrawerLeft() {
         playerInfo,
     } = useSelector((state) => state.players);
     const [open, setOpen] = React.useState(false);
+
+    console.log(playerInfo, "playerInfo");
 
     let playerId;
     if (typeof window !== 'undefined') {
@@ -246,6 +257,10 @@ export default function PersistentDrawerLeft() {
                         }}
                     >
                         {items.map((item) => {
+
+                            if(item.title === "Access" && playerInfo?.guildRank !== "R5"){
+                                return;
+                            }
                             let currentNav = false;
                             if (router.pathname === item.path) {
                                 currentNav = true;

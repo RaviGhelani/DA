@@ -159,7 +159,7 @@ export default function Home() {
                                     />
                                 </Box>
                                 <Box>
-                                    <Typography variant="h5" sx={{ fontSize: { lg: "22px", md: "18px", xs: "16px" } }}>{playerInfo?.guildId?.guildTag + " (" + playerInfo?.guildId.guildName + ")"}</Typography>
+                                    <Typography variant="h5" sx={{ fontSize: { lg: "22px", md: "18px", xs: "16px" } }}>{playerInfo?.guildId?.guildTag + " (" + playerInfo?.guildId?.guildName + ")"}</Typography>
                                     <Stack spacing={1}>
                                         <Typography sx={{ fontSize: { lg: "18px", md: "16px", xs: "13px" } }}>{"Total Players:" + ' ' + allPlayersListPagination?.totalItems}</Typography>
                                     </Stack>
